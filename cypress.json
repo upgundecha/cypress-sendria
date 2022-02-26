@@ -2,7 +2,7 @@
     "chromeWebSecurity": false,
     "env": {
         "SENDRIA_PROTOCOL": "http",
-        "SENDRIA_HOST": "localhost",
+        "SENDRIA_HOST": "sendria",
         "SENDRIA_SMTP_PORT": "1025",
         "SENDRIA_API_PORT": "1080"
     }
