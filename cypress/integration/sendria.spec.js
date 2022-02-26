@@ -6,7 +6,7 @@ describe("Seed emails", () => {
     describe("Sendria Get All Messages", () => {
         it("Should get all emails", () => {
             cy.sendriaGetAllMessages().then((messages) => {
-                expect(messages.data.length).to.equal(2);
+                expect(messages.data.length).to.equal(3);
             });
         });
     });
