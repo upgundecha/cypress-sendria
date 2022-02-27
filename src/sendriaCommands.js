@@ -10,7 +10,7 @@ class SendriaCommands {
             "sendriaGetMessageByEmailAddress",
             "sendriaGetMessageBySubject",
             "sendriaGetMessageByEmailAddressAndSubject",
-            "sendriaGetMessageHtml",
+            "sendriaGetMessageHtmlById",
             "sendriaDeleteMessage"
         ];
     }
@@ -54,7 +54,7 @@ class SendriaCommands {
         });
     }
 
-    sendriaGetMessageHtml(id) {
+    sendriaGetMessageHtmlById(id) {
         return this.request.get(`/api/messages/${id}.html`);
     }
 

@@ -81,7 +81,7 @@ cy.sendriaDeleteAllMessages()
 Access the message html using Id
 
 ```JavaScript
-cy.sendriaGetMessageHtml()
+cy.sendriaGetMessageHtmlById()
 ```
 ---
 

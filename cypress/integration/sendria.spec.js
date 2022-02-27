@@ -23,7 +23,7 @@ describe("Seed emails", () => {
     describe("Sendria get message html", () => {
         it("Should get message html", () => {
             cy.sendriaGetMessageByEmailAddressAndSubject('bar@example.com', 'Confirmation email').then((message) => {
-                cy.sendriaGetMessageHtml(message.id).then((html) => {
+                cy.sendriaGetMessageHtmlById(message.id).then((html) => {
                     const link = html.match(/(?<=href=")(.*)(?=" target)/g)[0];
                     expect(link).to.equal("http://localhost:1080")
                 });
