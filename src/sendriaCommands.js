@@ -9,7 +9,9 @@ class SendriaCommands {
             "sendriaDeleteAllMessages",
             "sendriaGetMessageByEmailAddress",
             "sendriaGetMessageBySubject",
-            "sendriaGetMessageByEmailAddressAndSubject"
+            "sendriaGetMessageByEmailAddressAndSubject",
+            "sendriaVisitMessageById",
+            "sendriaDeleteMessage"
         ];
     }
 
@@ -35,21 +37,6 @@ class SendriaCommands {
         return this.request.delete("/api/messages/");
     }
 
-    // sendriaGetMessageByEmailAddress(address) {
-    //     this.sendriaGetAllMessages().then((messages) => {
-    //         const reversedMessages = messages.data.reverse();
-    //         for (const message of reversedMessages) {
-    //             for (const recipients_message_to of message.recipients_message_to) {
-    //                 if (recipients_message_to === address) {
-    //                     console.log(message);
-    //                     return message;
-    //                 }
-    //             }
-    //         }
-    //         return null;
-    //     });
-    // }
-
     sendriaGetMessageByEmailAddress(address) {
         return this.sendriaGetAllMessages().then((messages) => {
             return messages.data.reverse().find((message) => message.recipients_message_to[0] === address) || null;
@@ -65,6 +52,14 @@ class SendriaCommands {
         return this.sendriaGetAllMessages().then((messages) => {
             return messages.data.reverse().find((message) => message.recipients_message_to[0] === address && message.subject === subject) || null;
         });
+    }
+
+    sendriaVisitMessageById(id) {
+        cy.visit(`${this.baseUrl}/api/messages/${id}.html`);
+    }
+
+    sendriaDeleteMessage(id) {
+        return this.request.delete(`/api/messages/${id}`);
     }
 }
 

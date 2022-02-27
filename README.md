@@ -1,6 +1,6 @@
 # Cypress Sendria
 
-Cypress Plugin for [Sendria Fake SMTP Server](https://github.com/msztolcman/sendria). Use this plugin for test cases like Account confirmation/verifications emails, one time passwords (OTPs) in email or general email testing.
+Cypress Plugin for [Sendria Fake SMTP Server](https://github.com/msztolcman/sendria). Use this plugin for tests like Account confirmation & verification emails, one time passwords (OTPs) in email or general email testing.
 
 This plugin uses Sendria API to retrive the messages.
 
@@ -42,21 +42,19 @@ You can also use env vars in your `cypress.json` as below :
 
 ## Commands
 
-### Usage
+> Cypress-Sendria commands use `cy.request()` which return a Cypress promise. Check Cypress [documentation](https://docs.cypress.io/api/commands/request.html) for requests
 
-> All of theses commands use directly `cy.request()` which return a Cypress Promise like. Check [the doc](https://docs.cypress.io/api/commands/request.html) !
-
-Using one of this commands must be like this example :
+You can use the commands as shown below example:
 
 ```JavaScript
-  cy.sendriaGetAllMessages().then((emails) => {
-    expect(emails.length).to.equal(4);
+  cy.sendriaGetAllMessages().then((messages) => {
+    expect(messages.length).to.equal(3);
   });
 ```
 
-For more examples you can check directly the [test file](./cypress/integration/sendria.spec.js).
+For more examples refer the [spec file](./cypress/integration/sendria.spec.js).
 
-### Documentation
+### Commands
 
 Get all messages received in the Sendria server.
 
@@ -68,16 +66,32 @@ cy.sendriaGetAllMessages()
 Get all messages and find one by containing a specific receipent email address and subject.
 
 ```JavaScript
-cy.sendriaGetMessageByEmailAddressAndSubject(address: string, subject: String)
+cy.sendriaGetMessageByEmailAddressAndSubject(address: string, subject: string)
 ```
 ---
 
-Delete all message in order to flush your mailbox !
+Delete all message in order to clear the
+Sendria mailbox
 
 ```JavaScript
 cy.sendriaDeleteAllMessages()
 ```
+---
 
+Access the message html using Id
+
+```JavaScript
+cy.sendriaVisitMessageById()
+```
+> When accessing the message html, specify "chromeWebSecurity": false, because Cypress will access another domain than app under test. This will work only in Chrome based browsers. Refer Cypress documentation [here](https://docs.cypress.io/guides/guides/web-security#Disabling-Web-Security) !
+
+---
+
+Delete a message using Id
+
+```JavaScript
+cy.sendriaDeleteMessageById()
+```
 ---
 
 ## Contributing
@@ -88,9 +102,17 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 - Install dependencies: `npm install`
 
-- Run Sendria
+- Run local Sendria instance. Find more [here](https://github.com/upgundecha/cypress-sendria) for installation options
+
+- Sendria API is documented [here](https://github.com/msztolcman/sendria#api)
 
 Please make sure to update tests as appropriate and run `npm test` command
+
+---
+
+> Inspired by the [cypress-maildev](https://github.com/Clebiez/cypress-maildev) plugin
+
+---
 
 ## License
 
