@@ -81,10 +81,8 @@ cy.sendriaDeleteAllMessages()
 Access the message html using Id
 
 ```JavaScript
-cy.sendriaVisitMessageById()
+cy.sendriaVisitMessageHtml()
 ```
-> When accessing the message html, specify "chromeWebSecurity": false, because Cypress will access another domain than app under test. This will work only in Chrome based browsers. Refer Cypress documentation [here](https://docs.cypress.io/guides/guides/web-security#Disabling-Web-Security) !
-
 ---
 
 Delete a message using Id

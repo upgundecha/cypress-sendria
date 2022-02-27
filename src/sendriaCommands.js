@@ -10,7 +10,7 @@ class SendriaCommands {
             "sendriaGetMessageByEmailAddress",
             "sendriaGetMessageBySubject",
             "sendriaGetMessageByEmailAddressAndSubject",
-            "sendriaVisitMessageById",
+            "sendriaGetMessageHtml",
             "sendriaDeleteMessage"
         ];
     }
@@ -54,8 +54,8 @@ class SendriaCommands {
         });
     }
 
-    sendriaVisitMessageById(id) {
-        cy.visit(`${this.baseUrl}/api/messages/${id}.html`);
+    sendriaGetMessageHtml(id) {
+        return this.request.get(`/api/messages/${id}.html`);
     }
 
     sendriaDeleteMessage(id) {

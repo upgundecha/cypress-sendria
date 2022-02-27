@@ -20,13 +20,13 @@ describe("Seed emails", () => {
         });
     });
 
-    describe("Sendria visit message", () => {
-        it("Should visit a message", () => {
+    describe("Sendria get message html", () => {
+        it("Should get message html", () => {
             cy.sendriaGetMessageByEmailAddressAndSubject('bar@example.com', 'Confirmation email').then((message) => {
-                console.log(message);
-                cy.sendriaVisitMessageById(message.id);
-                cy.get("p").should("have.text", "This is a confirmation email.");
-                cy.get("a").should("exist").and("have.text", "Click here");
+                cy.sendriaGetMessageHtml(message.id).then((html) => {
+                    const link = html.match(/(?<=href=")(.*)(?=" target)/g)[0];
+                    expect(link).to.equal("http://localhost:1080")
+                });
             });
         });
     });

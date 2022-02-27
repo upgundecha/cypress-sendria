@@ -1,6 +1,6 @@
 {
   "name": "cypress-sendria",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A cypress plugin for testing emails with Sendria Fake SMTP server",
   "main": "index.js",
   "scripts": {

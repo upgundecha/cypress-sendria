@@ -28,7 +28,7 @@ const emails = [
         from: "info@example.com",
         to: "bar@example.com",
         subject: "Confirmation email",
-        html: "<p>This is a confirmation email.</p><a href=http://localhost:1080>Click here</a",
+        html: "<p>This is a confirmation email.</p><a href=\"http://localhost:1080\">Click here</a>",
     }
 ];
 
