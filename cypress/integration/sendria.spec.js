@@ -13,8 +13,8 @@ describe("Seed emails", () => {
         testData.forEach((data) => {
             it(`Should get message matching receipient email address ${data.emailAddress} and subject ${data.subject}`, () => {
                 cy.sendriaGetMessageByEmailAddressAndSubject(data.emailAddress, data.subject).then((message) => {
-                    expect(data.emailAddress).to.equal(message.recipients_message_to[0]);
-                    expect(data.subject).to.equal(message.subject);
+                    expect(message.recipients_message_to).to.contain(data.emailAddress);
+                    expect(message.subject).to.contain(data.subject);
                 });
             });
         });
